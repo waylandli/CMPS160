@@ -26,7 +26,7 @@ class InputHandler {
       var redColor = 255
       var greenColor = 0
       var blueColor = 0
-      var sizeOfShape = size.value
+      var sizeOfShape = .125
       _inputHandler = this;
 
       // Mouse Events
@@ -69,7 +69,6 @@ class InputHandler {
           this.scene.addGeometry(shape);
         }
       }
-
 
     clickClear(scene) {
       this.scene.clearGeometries();
