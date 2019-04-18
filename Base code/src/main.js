@@ -5,15 +5,20 @@ function main() {
   canvas = document.getElementById("webgl");
 
   clearing = document.getElementById("clear");
+
+  // Buttons to change between shapes
   sq = document.getElementById("squarebutton");
   tri = document.getElementById("trianglebutton");
   cir = document.getElementById("circlebutton");
 
+  // Sliders to change the color
   red = document.getElementById("redRange");
   green = document.getElementById("greenRange");
   blue = document.getElementById("blueRange");
 
-  size = document.getElementById("sizes");
+  // Slider to change the size of shapes
+  sizes = document.getElementById("sizes");
+  sizeNumber = sizes.value
 
   // Retrieve WebGL rendering context
   var gl = getWebGLContext(canvas);
@@ -31,7 +36,7 @@ function main() {
   var a_Position = gl.getAttribLocation(gl.program, 'a_Position');
   // Initialize the scene
   var scene = new Scene();
-  var inputHandler = new InputHandler(canvas, scene,clearing,sq,tri,cir, red, green, blue, size);
+  var inputHandler = new InputHandler(canvas, scene,clearing,sq,tri,cir, red, green, blue, sizes, sizeNumber);
 
 
   // Add attibutes

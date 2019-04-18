@@ -15,11 +15,11 @@ class Square extends Geometry {
   generateSquareVertices(g_points, redColor, greenColor, blueColor, sizeOfShape) {
       var vertices = []
 
-      var vertex1 = new Vertex(g_points[0]-sizeOfShape, g_points[1]-sizeOfShape, 0.0, redColor, greenColor, blueColor);
-      var vertex2 = new Vertex(g_points[0]+sizeOfShape, g_points[1]-sizeOfShape, 0.0, redColor, greenColor, blueColor);
-      var vertex3 = new Vertex(g_points[0]+sizeOfShape, g_points[1]+sizeOfShape, 0.0, redColor, greenColor, blueColor);
-      var vertex4 = new Vertex(g_points[0]-sizeOfShape, g_points[1]-sizeOfShape, 0.0, redColor, greenColor, blueColor);
-      var vertex5 = new Vertex(g_points[0]-sizeOfShape, g_points[1]+sizeOfShape, 0.0, redColor, greenColor, blueColor);
+      var vertex1 = new Vertex(g_points[0]-Number(sizeOfShape), g_points[1]-Number(sizeOfShape), 0.0, redColor, greenColor, blueColor);
+      var vertex2 = new Vertex(g_points[0]+Number(sizeOfShape), g_points[1]-Number(sizeOfShape), 0.0, redColor, greenColor, blueColor);
+      var vertex3 = new Vertex(g_points[0]+Number(sizeOfShape), g_points[1]+Number(sizeOfShape), 0.0, redColor, greenColor, blueColor);
+      var vertex4 = new Vertex(g_points[0]-Number(sizeOfShape), g_points[1]-Number(sizeOfShape), 0.0, redColor, greenColor, blueColor);
+      var vertex5 = new Vertex(g_points[0]-Number(sizeOfShape), g_points[1]+Number(sizeOfShape), 0.0, redColor, greenColor, blueColor);
 
       vertices.push(vertex1);
       vertices.push(vertex2);
