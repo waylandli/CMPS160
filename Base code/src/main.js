@@ -4,6 +4,7 @@ function main() {
   // Retrieve the canvas from the HTML document
   canvas = document.getElementById("webgl");
 
+  
   clearing = document.getElementById("clear");
   sq = document.getElementById("squarebutton");
   tri = document.getElementById("trianglebutton");
@@ -13,6 +14,7 @@ function main() {
   green = document.getElementById("greenRange");
   blue = document.getElementById("blueRange");
 
+ //Shape size slider
   size = document.getElementById("sizes");
 
   // Retrieve WebGL rendering context
