@@ -163,6 +163,6 @@ class Renderer {
      * @param {Integer} pointCount The amount of vertices being drawn from the buffer.
      */
     drawBuffer(indicesLength) {
-        this.gl.drawElements(this.gl.TRIANGLE_STRIP, indicesLength, this.gl.UNSIGNED_SHORT, 0);
+        this.gl.drawElements(this.gl.TRIANGLES, indicesLength, this.gl.UNSIGNED_SHORT, 0);
     }
 }

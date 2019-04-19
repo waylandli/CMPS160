@@ -10,7 +10,7 @@ class InputHandler {
     /**
      * Initializes the event handeling functions within the program.
      */
-    constructor(canvas, scene,clearing,sq,tri,cir,red,green,blue,sizes, sizeNumber) {
+    constructor(canvas, scene,clearing,sq,tri,cir,red,green,blue,sizes, sizeNumber, step) {
       this.canvas = canvas;
       this.scene = scene;
 
@@ -30,6 +30,11 @@ class InputHandler {
       // Size slider
       this.sizes=sizes
 
+      // Segment step slider
+      this.step = step
+
+      var stepCount = step.value
+
       // Initializing initial size of the shapes
       var sizeOfShape=null
       sizeOfShape = sizeNumber
@@ -47,7 +52,7 @@ class InputHandler {
 
       // Mouse Events
       this.canvas.onmousedown = function(ev) {
-        _inputHandler.click(ev, canvas, whichShape, redColor, greenColor, blueColor, sizeOfShape)
+        _inputHandler.click(ev, canvas, whichShape, redColor, greenColor, blueColor, sizeOfShape, stepCount)
         dragging = 1
       };
 
@@ -57,7 +62,7 @@ class InputHandler {
 
       this.canvas.onmousemove = function(ev) {
         if (dragging == 1) {
-          _inputHandler.click(ev, canvas, whichShape, redColor, greenColor, blueColor, sizeOfShape)
+          _inputHandler.click(ev, canvas, whichShape, redColor, greenColor, blueColor, sizeOfShape, stepCount)
         }
       }
       this.clearing.onclick = function() { _inputHandler.clickClear(scene) };
@@ -70,12 +75,14 @@ class InputHandler {
       this.green.onchange = function() { greenColor = green.value };
       this.blue.onchange = function() { blueColor = blue.value };
       this.sizes.onchange = function() { sizeOfShape = document.getElementById("sizes").value }
+
+      this.step.onchange = function() { stepCount = step.value };
     }
     /**
      * Function called upon mouse click.
      */
 
-    click(ev, canvas, whichShape, redColor, greenColor, blueColor, sizeOfShape) {
+    click(ev, canvas, whichShape, redColor, greenColor, blueColor, sizeOfShape, stepCount) {
         var g_points = [];
         // Print x,y coordinates.
         console.log(ev.clientX, ev.clientY);
@@ -95,6 +102,10 @@ class InputHandler {
         }
         else if (whichShape == 2) {
           var shape = new Square(shader, g_points, redColor, greenColor, blueColor, sizeOfShape);
+          this.scene.addGeometry(shape);
+        }
+        else if (whichShape == 3) {
+          var shape = new Circle(shader, g_points, redColor, greenColor, blueColor, sizeOfShape, stepCount);
           this.scene.addGeometry(shape);
         }
       }

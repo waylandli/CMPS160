@@ -20,6 +20,9 @@ function main() {
   sizes = document.getElementById("sizes");
   sizeNumber = sizes.value
 
+  //Slider to change segment Count
+  var step = document.getElementById("step");
+
   // Retrieve WebGL rendering context
   var gl = getWebGLContext(canvas);
   if (!gl) {
@@ -36,7 +39,7 @@ function main() {
   var a_Position = gl.getAttribLocation(gl.program, 'a_Position');
   // Initialize the scene
   var scene = new Scene();
-  var inputHandler = new InputHandler(canvas, scene,clearing,sq,tri,cir, red, green, blue, sizes, sizeNumber);
+  var inputHandler = new InputHandler(canvas, scene,clearing,sq,tri,cir, red, green, blue, sizes, sizeNumber, step);
 
 
   // Add attibutes
