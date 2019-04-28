@@ -10,11 +10,7 @@ function main() {
   sq = document.getElementById("squarebutton");
   tri = document.getElementById("trianglebutton");
   cir = document.getElementById("circlebutton");
-
-  // Sliders to change the color
-  red = document.getElementById("redRange");
-  green = document.getElementById("greenRange");
-  blue = document.getElementById("blueRange");
+  cube = document.getElementById("cubebutton");
 
   // Slider to change the size of shapes
   sizes = document.getElementById("sizes");
@@ -38,7 +34,7 @@ function main() {
   var a_Position = gl.getAttribLocation(gl.program, 'a_Position');
   // Initialize the scene
   var scene = new Scene();
-  var inputHandler = new InputHandler(canvas, scene,clearing,sq,tri,cir, red, green, blue, sizes, sizeNumber, step);
+  var inputHandler = new InputHandler(canvas, scene,clearing,sq,tri,cir,cube, sizes, sizeNumber, step);
 
 
   // Add attibutes

@@ -10,7 +10,7 @@ class InputHandler {
     /**
      * Initializes the event handeling functions within the program.
      */
-    constructor(canvas, scene,clearing,sq,tri,cir,red,green,blue,sizes, sizeNumber, step) {
+    constructor(canvas, scene,clearing,sq,tri,cir,cube,sizes, sizeNumber, step) {
       this.canvas = canvas;
       this.scene = scene;
 
@@ -21,11 +21,7 @@ class InputHandler {
       this.sq = sq;
       this.tri=tri;
       this.cir=cir;
-
-      // Shape sliders
-      this.red=red
-      this.green=green
-      this.blue=blue
+      this.cube=cube;
 
       // Size slider
       this.sizes=sizes
@@ -52,9 +48,11 @@ class InputHandler {
 
       // Mouse Events
       this.canvas.onmousedown = function(ev) {
-        _inputHandler.click(ev, canvas, whichShape, redColor, greenColor, blueColor, sizeOfShape, stepCount)
+        _inputHandler.click(ev, canvas, whichShape, sizeOfShape, stepCount)
         dragging = 1
       };
+
+      document.getElementById('fileLoad').onclick = function() { _inputHandler.readSelectedFile() };
 
       this.canvas.onmouseup = function() {
         dragging = 0
@@ -62,7 +60,7 @@ class InputHandler {
 
       this.canvas.onmousemove = function(ev) {
         if (dragging == 1) {
-          _inputHandler.click(ev, canvas, whichShape, redColor, greenColor, blueColor, sizeOfShape, stepCount)
+          _inputHandler.click(ev, canvas, whichShape, sizeOfShape, stepCount)
         }
       }
       this.clearing.onclick = function() { _inputHandler.clickClear(scene) };
@@ -70,19 +68,20 @@ class InputHandler {
       this.tri.onclick = function() { whichShape = 1 };
       this.sq.onclick = function() { whichShape = 2 };
       this.cir.onclick = function() { whichShape = 3 };
+      this.cube.onclick = function() { whichShape = 4 };
 
-      this.red.onchange = function() { redColor = red.value };
-      this.green.onchange = function() { greenColor = green.value };
-      this.blue.onchange = function() { blueColor = blue.value };
+
       this.sizes.onchange = function() { sizeOfShape = document.getElementById("sizes").value }
 
       this.step.onchange = function() { stepCount = step.value };
+
+
     }
     /**
      * Function called upon mouse click.
      */
 
-    click(ev, canvas, whichShape, redColor, greenColor, blueColor, sizeOfShape, stepCount) {
+    click(ev, canvas, whichShape, sizeOfShape, stepCount) {
         var g_points = [];
         // Print x,y coordinates.
         console.log(ev.clientX, ev.clientY);
@@ -97,20 +96,44 @@ class InputHandler {
         g_points.push(y);
 
         if (whichShape == 1) {
-        var shape = new Triangle(shader, g_points, redColor, greenColor, blueColor, sizeOfShape);
+        var shape = new Triangle(shader, g_points, sizeOfShape);
         this.scene.addGeometry(shape);
         }
         else if (whichShape == 2) {
-          var shape = new Square(shader, g_points, redColor, greenColor, blueColor, sizeOfShape);
+          var shape = new Square(shader, g_points, sizeOfShape);
           this.scene.addGeometry(shape);
         }
         else if (whichShape == 3) {
-          var shape = new Circle(shader, g_points, redColor, greenColor, blueColor, sizeOfShape, stepCount);
+          var shape = new Circle(shader, g_points, sizeOfShape, stepCount);
+          this.scene.addGeometry(shape);
+        }
+        else if (whichShape == 4) {
+          var shape = new Cube(shader, g_points, sizeOfShape);
           this.scene.addGeometry(shape);
         }
       }
 
     clickClear(scene) {
       this.scene.clearGeometries();
+    }
+
+    /**
+     * Function called to read a selected file.
+     */
+    readSelectedFile() {
+        var fileReader = new FileReader();
+        var objFile = document.getElementById("fileInput").files[0];
+
+        if (!objFile) {
+            alert("OBJ file not set!");
+            return;
+        }
+
+        fileReader.readAsText(objFile);
+        fileReader.onloadend = function() {
+            // alert(fileReader.result);
+            var customObj = new CustomOBJ(shader, fileReader.result);
+            _inputHandler.scene.addGeometry(customObj);
+        }
     }
 }
