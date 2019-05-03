@@ -38,11 +38,6 @@ class InputHandler {
       // Counter to determine which shape
       var whichShape = 1
 
-      // Initial Colors of shapes
-      var redColor = 255
-      var greenColor = 0
-      var blueColor = 0
-
       var dragging = 0
       _inputHandler = this;
 

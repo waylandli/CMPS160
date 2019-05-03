@@ -18,6 +18,11 @@ class CustomOBJ extends Geometry {
   constructor(shader, objStr, imgPath) {
     super(shader);
 
+    this.modelMatrix = new Matrix4();
+
+    this.rotationMatrix = new Matrix4();
+    this.rotationMatrix.setRotate(1,0,1,1);
+
     // If an image path/data url is provided, then load/save that image as a texture
     if (imgPath != null) {
       var self = this;
@@ -46,6 +51,14 @@ class CustomOBJ extends Geometry {
 
     // CALL THIS AT THE END OF ANY SHAPE CONSTRUCTOR
     this.interleaveVertices();
+  }
+
+  render () {
+
+    // Rotate
+    this.modelMatrix = this.modelMatrix.multiply(this.rotationMatrix);
+
+    this.shader.setUniform("u_ModelMatrix", this.modelMatrix.elements);
   }
 
   /**
