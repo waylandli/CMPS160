@@ -178,7 +178,7 @@ class InputHandler {
 
         var imgPath = document.getElementById("texInput").value;
         var imgPathSplit = imgPath.split("\\");
-
+        
         // Tell the browser to load an image
         image.src = 'objs/' + imgPathSplit[imgPathSplit.length - 1];
         console.log(image.src);

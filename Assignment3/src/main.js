@@ -54,20 +54,19 @@ function main() {
   var scene = new Scene();
   var inputHandler = new InputHandler(canvas, scene,clearing,sq,tri,cir,cube, sizes, sizeNumber, step);
 
-  //var image = new Image()
-  //image.src = 'objs/patrick.jpg'
+  var image = new Image()
+  image.src = 'objs/cat_.jpg'
 
   var g_points = [];
   g_points.push(0);
   g_points.push(0);
-  var shape = new Cube(shader, g_points, .125);
-  scene.addGeometry(shape);
 
 
-
-
+  var shape = new Cube(shaderT, g_points, .1251, image);
 
   // Initialize renderer with scene and camera
   renderer = new Renderer(gl, scene, null);
   renderer.start();
+
+  scene.addGeometry(shape);
 }
