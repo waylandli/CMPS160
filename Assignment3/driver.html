@@ -1,0 +1,73 @@
+
+<!-- saved from url=(0069)file:///C:/Users/pleb/Desktop/160/Base%20code/Base%20code/driver.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+      <title> CMPS160 Base Code </title>
+
+      <!-- Include Base code libs -->
+      <script src="src/main.js"></script>
+      <script src="src/input.js"></script>
+      <script src="src/graphics/renderer.js"></script>
+      <script src="src/graphics/scene.js"></script>
+      <script src="src/graphics/geometry/geometry.js"></script>
+      <script src="src/graphics/geometry/vertex.js"></script>
+      <script src="src/graphics/geometry/shapes/triangle.js"></script>
+      <script src="src/graphics/geometry/shapes/square.js"></script>
+      <script src="src/graphics/geometry/shapes/circle.js"></script>
+      <script src="src/graphics/geometry/shapes/custom.js"></script>
+      <script src="src/graphics/geometry/shapes/cube.js"></script>
+
+      <!-- Include external libs -->
+      <script src="lib/webgl-utils.js"></script>
+      <script src="lib/webgl-render.js"></script>
+      <script src="lib/webgl-debug.js"></script>
+      <script src="lib/cuon-utils.js"></script>
+      <script src = "lib/webgl-loader.js"></script>
+      <script src="lib/cuon-matrix.js"></script>
+      <script src="lib/load-file.js"></script>
+
+      <!-- Include shaders -->
+      <script src="src/graphics/shaders/shader.js"></script>
+      <script src="src/graphics/shaders/asg1.js"></script>
+      <script src="src/graphics/shaders/asg3.js"></script>
+  </head>
+
+  <body onload="main()">
+    <canvas id="webgl" width="400" height="400">
+      Please use a browser that supports "canvas"
+    </canvas><br><br>
+    <button id="clear" >Clear Canvas</button>
+
+    Set OBJ: <input type="file" id="fileInput"/>
+    Set Texture Image: <input type="file" id="texInput"/>
+    <button type="button" id="fileLoad">Add Geometry To Scene</button>
+
+    <br><br>
+    <label for="drawing">Drawing Mode:</label>
+    <br>
+    <button id="squarebutton">Spinning Squares</button>
+    <button id="trianglebutton">Fluctuating Triangles</button>
+    <button id="circlebutton">Randomly Moving Circles</button>
+    <button id="cubebutton">Tilted Cube</button>
+    <br><br>
+    <label for="color">Shape Color:</label><br>
+
+      <input type="button" id="colorButton" value="Solid Color">
+
+      <label for="red">Red</label>
+      <input type="range" min="0" max="255" value="255" class="slider" id="redRange">
+
+      <label for="green">Green</label>
+      <input type="range" min="0" max="255" value="0" class="slider" id="greenRange">
+
+      <label for="blue">Blue</label>
+      <input type="range" min="0" max="255" value="0" class="slider" id="blueRange">
+      <br><br>
+
+      <label for="shapesize">Shape Size:</label>
+      <input type="range" min=".125" max="1" step =".025" value=".125" class="slider" id="sizes">
+
+      <label for="segmentcount">(Circles) Segment Count:</label>
+      <input type="range" min="3" max="24" value="3" step = "1" class="slider" id="step">
+
+</body></html>
