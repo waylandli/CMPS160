@@ -27,7 +27,9 @@ function main() {
 
   }
 
-
+  // Initialize the scene
+  var scene = new Scene();
+  var inputHandler = new InputHandler(canvas, scene,clearing,sq,tri,cir,cube, sizes, sizeNumber, step);
 
   // Initialize shader
   shader = new Shader(gl, ASG1_VSHADER, ASG1_FSHADER);
@@ -50,23 +52,14 @@ function main() {
 
 
   var a_Position = gl.getAttribLocation(gl.program, 'a_Position');
-  // Initialize the scene
-  var scene = new Scene();
-  var inputHandler = new InputHandler(canvas, scene,clearing,sq,tri,cir,cube, sizes, sizeNumber, step);
 
-  var image = new Image()
-  image.src = 'objs/cat_.jpg'
-
-  var g_points = [];
-  g_points.push(0);
-  g_points.push(0);
-
-
-  var shape = new Cube(shaderT, g_points, .1251, image);
+  const center = [0,0];
+  var image = document.getElementById('startingImage')
+  var shape = new Cube(shaderT, center, .1251, image);
 
   // Initialize renderer with scene and camera
   renderer = new Renderer(gl, scene, null);
   renderer.start();
 
-  scene.addGeometry(shape);
+  inputHandler.scene.addGeometry(shape);
 }

@@ -185,6 +185,4 @@ class InputHandler {
         console.log(image);
         return true;
     }
-
-
 }
