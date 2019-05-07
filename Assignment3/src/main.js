@@ -60,7 +60,7 @@ function main() {
   var g_points = [];
   g_points.push(0);
   g_points.push(0);
-  var shape = new Cube(shaderT, g_points, .125, image);
+  var shape = new Cube(shader, g_points, .125);
   scene.addGeometry(shape);
 
 
