@@ -30,11 +30,11 @@ function main() {
   shader.addUniform("u_ProjectionMatrix", "mat4", new Matrix4().elements);
 
   // Load texture and add triangle to the scene with that texture.
-  inputHandler.readTexture("objs/cat_.jpg", function(image) {
+  inputHandler.readTexture("objs/patrick.jpg", function(image) {
 
 //    for (i = -1; i < 3; i = i + .25) {
     //  for (j = -1; j < 3; j = i + .25){
-        var shape = new Cube(shader,[ 0, 0, 0], image)
+        var shape = new Cube(shader,[0, 0, 0], image)
         scene.addGeometry(shape)
     //  }
 //    }

@@ -65,12 +65,12 @@ class Cube extends Geometry {
     vertices.push(vertex6);
 
     // Back of Cube
-    var vertex1 = new Vertex(g_points[0]-Number(sizeOfShape), g_points[1]-Number(sizeOfShape), g_points[2]-Number(sizeOfShape) * 2);
-    var vertex2 = new Vertex(g_points[0]+Number(sizeOfShape), g_points[1]-Number(sizeOfShape), g_points[2]-Number(sizeOfShape) * 2);
-    var vertex3 = new Vertex(g_points[0]+Number(sizeOfShape), g_points[1]+Number(sizeOfShape), g_points[2]-Number(sizeOfShape) * 2);
-    var vertex4 = new Vertex(g_points[0]-Number(sizeOfShape), g_points[1]-Number(sizeOfShape), g_points[2]-Number(sizeOfShape) * 2);
-    var vertex5 = new Vertex(g_points[0]-Number(sizeOfShape), g_points[1]+Number(sizeOfShape), g_points[2]-Number(sizeOfShape) * 2);
-    var vertex6 = new Vertex(g_points[0]+Number(sizeOfShape), g_points[1]+Number(sizeOfShape), g_points[2]-Number(sizeOfShape) * 2);
+    var vertex1 = new Vertex(g_points[0]-Number(sizeOfShape), g_points[1]-Number(sizeOfShape), g_points[2]+Number(sizeOfShape) * 2);
+    var vertex2 = new Vertex(g_points[0]+Number(sizeOfShape), g_points[1]-Number(sizeOfShape), g_points[2]+Number(sizeOfShape) * 2);
+    var vertex3 = new Vertex(g_points[0]+Number(sizeOfShape), g_points[1]+Number(sizeOfShape), g_points[2]+Number(sizeOfShape) * 2);
+    var vertex4 = new Vertex(g_points[0]-Number(sizeOfShape), g_points[1]-Number(sizeOfShape), g_points[2]+Number(sizeOfShape) * 2);
+    var vertex5 = new Vertex(g_points[0]-Number(sizeOfShape), g_points[1]+Number(sizeOfShape), g_points[2]+Number(sizeOfShape) * 2);
+    var vertex6 = new Vertex(g_points[0]+Number(sizeOfShape), g_points[1]+Number(sizeOfShape), g_points[2]+Number(sizeOfShape) * 2);
     // vertex1.texCoord = [0.0 , 0.0];
     // vertex2.texCoord = [1.0 , 0.0];
     // vertex3.texCoord = [1.0 , 1.0];
@@ -96,11 +96,11 @@ class Cube extends Geometry {
 
     // Right of Cube
     var vertex1 = new Vertex(g_points[0]+Number(sizeOfShape), g_points[1]-Number(sizeOfShape), g_points[2]);
-    var vertex2 = new Vertex(g_points[0]+Number(sizeOfShape), g_points[1]-Number(sizeOfShape), g_points[2]-Number(sizeOfShape) * 2);
-    var vertex3 = new Vertex(g_points[0]+Number(sizeOfShape), g_points[1]+Number(sizeOfShape), g_points[2]-Number(sizeOfShape) * 2);
+    var vertex2 = new Vertex(g_points[0]+Number(sizeOfShape), g_points[1]-Number(sizeOfShape), g_points[2]+Number(sizeOfShape) * 2);
+    var vertex3 = new Vertex(g_points[0]+Number(sizeOfShape), g_points[1]+Number(sizeOfShape), g_points[2]+Number(sizeOfShape) * 2);
     var vertex4 = new Vertex(g_points[0]+Number(sizeOfShape), g_points[1]-Number(sizeOfShape), g_points[2]);
     var vertex5 = new Vertex(g_points[0]+Number(sizeOfShape), g_points[1]+Number(sizeOfShape), g_points[2]);
-    var vertex6 = new Vertex(g_points[0]+Number(sizeOfShape), g_points[1]+Number(sizeOfShape), g_points[2]-Number(sizeOfShape) * 2);
+    var vertex6 = new Vertex(g_points[0]+Number(sizeOfShape), g_points[1]+Number(sizeOfShape), g_points[2]+Number(sizeOfShape) * 2);
     // vertex1.texCoord = [0.0 , 0.0];
     // vertex2.texCoord = [1.0 , 0.0];
     // vertex3.texCoord = [1.0 , 1.0];
@@ -135,11 +135,11 @@ class Cube extends Geometry {
 
     // Left of Cube
     var vertex1 = new Vertex(g_points[0]-Number(sizeOfShape), g_points[1]-Number(sizeOfShape), g_points[2]);
-    var vertex2 = new Vertex(g_points[0]-Number(sizeOfShape), g_points[1]-Number(sizeOfShape), g_points[2]-Number(sizeOfShape) * 2);
-    var vertex3 = new Vertex(g_points[0]-Number(sizeOfShape), g_points[1]+Number(sizeOfShape), g_points[2]-Number(sizeOfShape) * 2);
+    var vertex2 = new Vertex(g_points[0]-Number(sizeOfShape), g_points[1]-Number(sizeOfShape), g_points[2]+Number(sizeOfShape) * 2);
+    var vertex3 = new Vertex(g_points[0]-Number(sizeOfShape), g_points[1]+Number(sizeOfShape), g_points[2]+Number(sizeOfShape) * 2);
     var vertex4 = new Vertex(g_points[0]-Number(sizeOfShape), g_points[1]-Number(sizeOfShape), g_points[2]);
     var vertex5 = new Vertex(g_points[0]-Number(sizeOfShape), g_points[1]+Number(sizeOfShape), g_points[2]);
-    var vertex6 = new Vertex(g_points[0]-Number(sizeOfShape), g_points[1]+Number(sizeOfShape), g_points[2]-Number(sizeOfShape) * 2);
+    var vertex6 = new Vertex(g_points[0]-Number(sizeOfShape), g_points[1]+Number(sizeOfShape), g_points[2]+Number(sizeOfShape) * 2);
     // vertex1.texCoord = [0.0 , 0.0];
     // vertex2.texCoord = [1.0 , 0.0];
     // vertex3.texCoord = [1.0 , 1.0];
@@ -166,10 +166,10 @@ class Cube extends Geometry {
     // Top of Cube
     var vertex1 = new Vertex(g_points[0]-Number(sizeOfShape), g_points[1]+Number(sizeOfShape), g_points[2]);
     var vertex2 = new Vertex(g_points[0]+Number(sizeOfShape), g_points[1]+Number(sizeOfShape), g_points[2]);
-    var vertex3 = new Vertex(g_points[0]+Number(sizeOfShape), g_points[1]+Number(sizeOfShape), g_points[2]-Number(sizeOfShape) * 2);
+    var vertex3 = new Vertex(g_points[0]+Number(sizeOfShape), g_points[1]+Number(sizeOfShape), g_points[2]+Number(sizeOfShape) * 2);
     var vertex4 = new Vertex(g_points[0]-Number(sizeOfShape), g_points[1]+Number(sizeOfShape), g_points[2]);
-    var vertex5 = new Vertex(g_points[0]-Number(sizeOfShape), g_points[1]+Number(sizeOfShape), g_points[2]-Number(sizeOfShape) * 2);
-    var vertex6 = new Vertex(g_points[0]+Number(sizeOfShape), g_points[1]+Number(sizeOfShape), g_points[2]-Number(sizeOfShape) * 2);
+    var vertex5 = new Vertex(g_points[0]-Number(sizeOfShape), g_points[1]+Number(sizeOfShape), g_points[2]+Number(sizeOfShape) * 2);
+    var vertex6 = new Vertex(g_points[0]+Number(sizeOfShape), g_points[1]+Number(sizeOfShape), g_points[2]+Number(sizeOfShape) * 2);
     // vertex1.texCoord = [0.0 , 0.0];
     // vertex2.texCoord = [1.0 , 0.0];
     // vertex3.texCoord = [1.0 , 1.0];
@@ -196,10 +196,10 @@ class Cube extends Geometry {
     // Bottom of Cube
     var vertex1 = new Vertex(g_points[0]+Number(sizeOfShape), g_points[1]-Number(sizeOfShape), g_points[2]);
     var vertex2 = new Vertex(g_points[0]-Number(sizeOfShape), g_points[1]-Number(sizeOfShape), g_points[2]);
-    var vertex3 = new Vertex(g_points[0]-Number(sizeOfShape), g_points[1]-Number(sizeOfShape), g_points[2]-Number(sizeOfShape) * 2);
+    var vertex3 = new Vertex(g_points[0]-Number(sizeOfShape), g_points[1]-Number(sizeOfShape), g_points[2]+Number(sizeOfShape) * 2);
     var vertex4 = new Vertex(g_points[0]+Number(sizeOfShape), g_points[1]-Number(sizeOfShape), g_points[2]);
-    var vertex5 = new Vertex(g_points[0]+Number(sizeOfShape), g_points[1]-Number(sizeOfShape), g_points[2]-Number(sizeOfShape) * 2);
-    var vertex6 = new Vertex(g_points[0]-Number(sizeOfShape), g_points[1]-Number(sizeOfShape), g_points[2]-Number(sizeOfShape) * 2);
+    var vertex5 = new Vertex(g_points[0]+Number(sizeOfShape), g_points[1]-Number(sizeOfShape), g_points[2]+Number(sizeOfShape) * 2);
+    var vertex6 = new Vertex(g_points[0]-Number(sizeOfShape), g_points[1]-Number(sizeOfShape), g_points[2]+Number(sizeOfShape) * 2);
     vertex1.texCoord = [0.0 , 0.0];
     vertex2.texCoord = [1.0 , 0.0];
     vertex3.texCoord = [1.0 , 1.0];

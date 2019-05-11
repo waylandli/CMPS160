@@ -18,8 +18,8 @@ class Camera {
         this.eye     = new Vector3([0, 0, 1]);
         this.center  = new Vector3([0, 0,-1]);
         this.up      = new Vector3([0, 1, 1]);
-        this.xAxis      = new Vector3([1, 0, 0]);
-        this.yAxis      = new Vector3([0, 1, 0]);
+
+        this.newCenter = new Vector3();
 
         this.viewMatrix = new Matrix4();
         this.updateView();
@@ -55,7 +55,7 @@ class Camera {
       n = n.normalize()
 
       // Calculate the u camera axis
-      var u = this.xAxis.cross(n);
+      var u = this.upd.cross(n);
 
       u = u.normalize();
 
@@ -81,14 +81,41 @@ class Camera {
     }
 
     tilt(dir) {
-      if (dir < 0) {
-        this.eye.elements[1] = this.eye.elements[1] + .01
-        
-      }
-      else if (dir > 0) {
-        this.eye.elements[1] = this.eye.elements[1] - .01
 
-      }
+        // Calculate the n camera axis
+        var n = this.eye.sub(this.center);
+        n = n.normalize()
+
+        // Calculate the u camera axis
+        var u = this.up.cross(n);
+        u = u.normalize();
+
+        // New center = center - eye
+        this.newCenter = this.center.sub(this.eye);
+
+        // Creating rotation matrix to rotate around u
+        var rotationMatrix = new Matrix4();
+        rotationMatrix.setRotate(dir,u.elements[0],u.elements[1],u.elements[2]);
+
+        // New Center multiplied by rotation matrix
+        this.newCenter = rotationMatrix.multiplyVector3(this.newCenter)
+
+        // Center = eye + new Center
+        this.center = this.eye.add(this.newCenter);
+
+        // If the angle between the line-of-sight and the "up vector" is less
+        // than 10 degrees or greater than 170 degrees, then rotate the
+        // "up_vector" about the u axis.
+        // cos(10 degrees) = 0.985; cos(170 degrees) = -0.985
+        var num = n.elements[0] * this.up.elements[0] + n.elements[1] * this.up.elements[1] + n.elements[2] * this.up.elements[2];
+        console.log(num);
+        if (Math.abs(num) >= 0.985) {
+          //matrix.multiplyV3(this.up, rotationMatrix, this.up);
+
+          this.up = rotationMatrix.multiplyVector3(this.up)
+
+        }
+
       this.updateView();
     }
 

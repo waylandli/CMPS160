@@ -14,12 +14,17 @@ class InputHandler {
       this.canvas = canvas;
       this.scene  = scene;
       this.camera = camera;
+      var move = false;
 
       _inputHandler = this;
 
       // Mouse Events
-      this.canvas.onmousedown = function(ev) { _inputHandler.mouseClick(ev) };
-      this.canvas.onmousemove = function(ev) { _inputHandler.mouseMove(ev) };
+      this.canvas.onmousedown = function(ev) { move = true };
+      this.canvas.onmouseup   = function(ev) { move = false };
+      this.canvas.onmousemove = function(ev) {
+        if (move == true)
+         _inputHandler.mouseMove(ev)
+       };
 
       // Keyboard Events
       document.addEventListener('keydown', function(ev) { _inputHandler.keyDown(ev); }, false);
@@ -50,11 +55,11 @@ class InputHandler {
         var movementY = ev.movementY;
         console.log("movementY", movementY);
 
-        if(movementX > 0) {
-            this.camera.pan(-1);
+        if(movementY > 0) {
+            this.camera.tilt(-1);
         }
-        else if(movementX < 0) {
-            this.camera.pan(1);
+        else if(movementY < 0) {
+            this.camera.tilt(1);
         }
 
 
