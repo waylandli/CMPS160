@@ -33,6 +33,8 @@ class InputHandler {
       // Button Events
       document.getElementById('fileLoad').onclick = function() { _inputHandler.readSelectedFile() };
 
+      document.getElementById('far').onclick = function() { _inputHandler.dist() };
+
       // HTML Slider Events
       document.getElementById('exampleSlider').addEventListener('mouseup', function() { console.log(this.value); });
     }
@@ -75,10 +77,10 @@ class InputHandler {
         console.log("key down", keyName);
 
         if(keyName == "a") {
-            this.camera.truck(1);
+            this.camera.truck(-1);
         }
         else if(keyName == "d") {
-            this.camera.truck(-1);
+            this.camera.truck(1);
         }
         else if(keyName == "w") {
             this.camera.dolly(1);
@@ -123,5 +125,9 @@ class InputHandler {
         // Tell the browser to load an image
         image.src = src
         return true;
+    }
+
+    dist() {
+      this.camera.addDist();
     }
 }

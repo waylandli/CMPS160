@@ -80,11 +80,11 @@ class Cube extends Geometry {
 
     // if (sizeOfShape == .1251) {
       vertex1.texCoord = [0.0 , 0.0];
-      vertex2.texCoord = [3.0 , 0.0];
-      vertex3.texCoord = [3.0 , 3.0];
+      vertex2.texCoord = [1.0 , 0.0];
+      vertex3.texCoord = [1.0 , 1.0];
       vertex4.texCoord = [0.0 , 0.0];
-      vertex5.texCoord = [0.0 , 3.0];
-      vertex6.texCoord = [3.0 , 3.0];
+      vertex5.texCoord = [0.0 , 1.0];
+      vertex6.texCoord = [1.0 , 1.0];
     // }
 
     vertices.push(vertex1);
@@ -111,10 +111,10 @@ class Cube extends Geometry {
     // if (sizeOfShape == .1251) {
       vertex1.texCoord = [0.0 , 0.0];
       vertex2.texCoord = [1.0 , 0.0];
-      vertex3.texCoord = [1.0 , .5];
+      vertex3.texCoord = [1.0 , 1];
       vertex4.texCoord = [0.0 , 0.0];
-      vertex5.texCoord = [0.0 , .5];
-      vertex6.texCoord = [1.0 , .5];
+      vertex5.texCoord = [0.0 , 1];
+      vertex6.texCoord = [1.0 , 1];
     // }
 
     vertices.push(vertex1);
@@ -127,10 +127,10 @@ class Cube extends Geometry {
     // if (sizeOfShape == .1251) {
       vertex1.texCoord = [0.0 , 0.0];
       vertex2.texCoord = [1.0 , 0.0];
-      vertex3.texCoord = [1.0 , .5];
+      vertex3.texCoord = [1.0 , 1];
       vertex4.texCoord = [0.0 , 0.0];
-      vertex5.texCoord = [0.0 , .5];
-      vertex6.texCoord = [1.0 , .5];
+      vertex5.texCoord = [0.0 , 1];
+      vertex6.texCoord = [1.0 , 1];
     // }
 
     // Left of Cube
@@ -148,10 +148,10 @@ class Cube extends Geometry {
     // vertex6.texCoord = [1.0 , 1.0];
 
     // if (sizeOfShape == .1251) {
-      vertex1.texCoord = [0.0 , 0.5];
-      vertex2.texCoord = [1.0 , 0.5];
+      vertex1.texCoord = [0.0 , 1];
+      vertex2.texCoord = [1.0 , 1];
       vertex3.texCoord = [1.0 , 1.0];
-      vertex4.texCoord = [0.0 , 0.5];
+      vertex4.texCoord = [0.0 , 1];
       vertex5.texCoord = [0.0 , 1.0];
       vertex6.texCoord = [1.0 , 1.0];
     // }
@@ -179,11 +179,11 @@ class Cube extends Geometry {
 
     // if (sizeOfShape == .1251) {
       vertex1.texCoord = [0.0 , 0.0];
-      vertex2.texCoord = [2.0 , 0.0];
-      vertex3.texCoord = [2.0 , 1.0];
+      vertex2.texCoord = [1.0 , 0.0];
+      vertex3.texCoord = [1.0 , 1.0];
       vertex4.texCoord = [0.0 , 0.0];
       vertex5.texCoord = [0.0 , 1.0];
-      vertex6.texCoord = [2.0 , 1.0];
+      vertex6.texCoord = [1.0 , 1.0];
     // }
 
     vertices.push(vertex1);

@@ -13,6 +13,8 @@ class Camera {
     */
     constructor(shader) {
         this.speed = 0.1;
+        this.near = .1;
+        this.far = 5;
 
         // Camera view attributes
         this.eye     = new Vector3([0, 0, 1]);
@@ -32,11 +34,8 @@ class Camera {
         var n = this.eye.sub(this.center);
         n = n.normalize()
 
-        console.log(n);
         // Calculate the u camera axis
         var u = this.up.cross(n);
-
-        console.log(u);
         u = u.normalize();
 
         // Scale the u axis to the desired distance to move
@@ -55,8 +54,7 @@ class Camera {
       n = n.normalize()
 
       // Calculate the u camera axis
-      var u = this.upd.cross(n);
-
+      var u = this.up.cross(n);
       u = u.normalize();
 
       // Scale the u axis to the desired distance to move
@@ -117,6 +115,10 @@ class Camera {
         }
 
       this.updateView();
+    }
+
+    addDist(){
+      this.projectionMatrix.setOrtho(-1, 1, -1, 1, this.near, this.far)
     }
 
     updateView() {
