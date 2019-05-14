@@ -18,6 +18,11 @@ class Camera {
         this.view = true;
         this.pers = 30;
 
+        this.left = -1
+        this.right = 1
+        this.bottom = -1
+        this.top = 1
+
         // Camera view attributes
         this.eye     = new Vector3([0, 0, 1]);
         this.center  = new Vector3([0, 0,-1]);
@@ -155,24 +160,53 @@ class Camera {
     }
 
     zooom(dir) {
-      if (this.pers == 100 && dir == 1){
-        this.pers = this.pers
-      }
-      else if (this.pers > 5) {
-        this.pers = this.pers + dir;
-        if (this.view) {
-          this.projectionMatrix.setOrtho(-1, 1, -1, 1, this.near, this.far)
+      if (!this.view) {
+        if (this.pers == 100 && dir == 1){
+          this.pers = this.pers
         }
-        else if (!this.view) {
-          this.projectionMatrix.setPerspective(this.pers, canvas.width/canvas.height, 1, 100)
+        else if (this.pers > 5) {
+          this.pers = this.pers + dir;
         }
+        else if (this.pers == 5 && dir == -1){
+          this.pers = this.pers
+        }
+        else {
+          this.pers = this.pers + dir;
+        }
+        this.projectionMatrix.setPerspective(this.pers, canvas.width/canvas.height, 1, 100)
       }
-      else if (this.pers == 5 && dir == -1){
-        this.pers = this.pers
-      }
-
-      else {
-        this.pers = this.pers + dir;
+      else if (this.view) {
+        if(Math.abs(this.left) > .5 && Math.abs(this.top) < 1.5 ){
+            if(dir == -1){
+                this.left += .1
+                this.right -= .1
+                this.bottom += .1
+                this.top -= .1
+            }
+            else if(dir == 1){
+                this.left -= .1
+                this.right += .1
+                this.bottom -= .1
+                this.top += .1
+            }
+        }
+        else if(Math.abs(this.left) < .5){
+            if(dir == 1){
+                this.left -= .1
+                this.right += .1
+                this.bottom -= .1
+                  his.top += .1
+            }
+        }
+        else if(Math.abs(this.top) > 1.5){
+            if(dir == -1){
+                this.left += .1
+                this.right -= .1
+                this.bottom += .1
+                this.top -= .1
+            }
+        }
+          this.projectionMatrix.setOrtho(this.left, this.right, this.bottom, this.top, 1, 10)
       }
 
     }
