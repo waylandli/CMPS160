@@ -20,6 +20,7 @@ function main() {
   // Initialize shader
   shader = new Shader(gl, ASG4_VSHADER, ASG4_FSHADER);
 
+
   // Add attibutes
   shader.addAttribute("a_Position");
   shader.addAttribute("a_Color");
@@ -30,14 +31,35 @@ function main() {
   shader.addUniform("u_ProjectionMatrix", "mat4", new Matrix4().elements);
 
 
+  camera.projectionMatrix.setOrtho(-1, 1, -1, 1, 0.1, 10)
+
 
   // Load texture and add triangle to the scene with that texture.
-  inputHandler.readTexture("objs/check.jpg", function(image) {
+  inputHandler.readTexture("objs/wood.jpg", function(image) {
 
+    for (i = 0; i < 1;i = i +.25){
+      for (j = 0; j < 1;j = j +.25){
+        var shape = new Cube(shader,[i, j-.875, 0], image, .125)
+        scene.addGeometry(shape)
+      }
+    }
+
+    for (i = 0; i < 2;i = i +.25){
+      for (j = 0; j < 1;j = j +.25){
+        var shape = new Cube(shader,[-1, i-.875, j], image, .125)
+        scene.addGeometry(shape)
+      }
+    }
+  })
+
+  inputHandler.readTexture("objs/grass.png", function(image) {
       var shape = new Square(shader, image)
       scene.addGeometry(shape)
 
-      var shape = new Cube(shader,[0, 0, 0], image)
+  })
+
+  inputHandler.readTexture("objs/blue.jpg", function(image) {
+      var shape = new Cube(shader,[0, -1, -4], image, 8)
       scene.addGeometry(shape)
 
   })

@@ -14,7 +14,9 @@ class Camera {
     constructor(shader) {
         this.speed = 0.1;
         this.near = .1;
-        this.far = 5;
+        this.far = 10;
+        this.view = true;
+        this.pers = 30;
 
         // Camera view attributes
         this.eye     = new Vector3([0, 0, 1]);
@@ -53,30 +55,53 @@ class Camera {
       var n = this.eye.sub(this.center);
       n = n.normalize()
 
-      // Calculate the u camera axis
-      var u = this.up.cross(n);
-      u = u.normalize();
-
       // Scale the u axis to the desired distance to move
-      u = u.mul(dir * this.speed);
+      n = n.mul(dir * this.speed);
       // Add the direction vector to both the eye and center positions
-      this.eye = this.eye.add(u);
-      this.center = this.center.add(u);
+      this.eye = this.eye.add(n);
+      this.center = this.center.add(n);
 
       this.updateView();
     }
 
     pan(dir) {
-      if (dir < 0) {
-        this.eye.elements[0] = this.eye.elements[0] + .01
-    //    this.center.elements[0] = this.center.elements[0] + .01
+      // Calculate the n camera axis
+      var n = this.eye.sub(this.center);
+      n = n.normalize()
+
+      // Calculate the u camera axis
+      var u = this.up.cross(n);
+      u = u.normalize();
+      u = u.cross(n);
+
+      // New center = center - eye
+      this.newCenter = this.center.sub(this.eye);
+
+      // Creating rotation matrix to rotate around u
+      var rotationMatrix = new Matrix4();
+      rotationMatrix.setRotate(dir, u.elements[0], u.elements[1], u.elements[2]);
+
+      // New Center multiplied by rotation matrix
+      this.newCenter = rotationMatrix.multiplyVector3(this.newCenter)
+
+      // Center = eye + new Center
+      this.center = this.eye.add(this.newCenter);
+
+      // If the angle between the line-of-sight and the "up vector" is less
+      // than 10 degrees or greater than 170 degrees, then rotate the
+      // "up_vector" about the u axis.
+      // cos(10 degrees) = 0.985; cos(170 degrees) = -0.985
+      var num = n.elements[0] * this.up.elements[0] + n.elements[1] * this.up.elements[1] + n.elements[2] * this.up.elements[2];
+      console.log(num);
+      if (Math.abs(num) >= 0.985) {
+        //matrix.multiplyV3(this.up, rotationMatrix, this.up);
+
+        this.up = rotationMatrix.multiplyVector3(this.up)
+
       }
-      else if (dir > 0) {
-        this.eye.elements[0] = this.eye.elements[0] - .01
-    //   this.center.elements[0] = this.center.elements[0] - .01
-      }
-      this.updateView();
-    }
+
+    this.updateView();
+  }
 
     tilt(dir) {
 
@@ -118,7 +143,38 @@ class Camera {
     }
 
     addDist(){
-      this.projectionMatrix.setOrtho(-1, 1, -1, 1, this.near, this.far)
+      var canvas = document.getElementById("webgl");
+      if (this.view == true) {
+        this.projectionMatrix.setPerspective(this.pers, canvas.width/canvas.height, 1, 100)
+        this.view = false
+      }
+      else {
+        this.projectionMatrix.setOrtho(-1, 1, -1, 1, this.near, this.far)
+        this.view = true
+      }
+    }
+
+    zooom(dir) {
+      if (this.pers == 100 && dir == 1){
+        this.pers = this.pers
+      }
+      else if (this.pers > 5) {
+        this.pers = this.pers + dir;
+        if (this.view) {
+          this.projectionMatrix.setOrtho(-1, 1, -1, 1, this.near, this.far)
+        }
+        else if (!this.view) {
+          this.projectionMatrix.setPerspective(this.pers, canvas.width/canvas.height, 1, 100)
+        }
+      }
+      else if (this.pers == 5 && dir == -1){
+        this.pers = this.pers
+      }
+
+      else {
+        this.pers = this.pers + dir;
+      }
+
     }
 
     updateView() {

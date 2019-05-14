@@ -40,6 +40,16 @@ class Square extends Geometry {
       vertices.push(vertex5);
       vertices.push(vertex6);
 
+  //    var vertex1 = new Vertex(-8, -8, -8);
+  //    var vertex2 = new Vertex(8, -8, -8);
+  //    var vertex3 = new Vertex(8, 8, -8);
+
+
+  //    vertices.push(vertex1);
+  //    vertices.push(vertex2);
+  //    vertices.push(vertex3);
+
+
 
       return vertices;
   }

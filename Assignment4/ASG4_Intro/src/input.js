@@ -29,11 +29,12 @@ class InputHandler {
       // Keyboard Events
       document.addEventListener('keydown', function(ev) { _inputHandler.keyDown(ev); }, false);
       document.addEventListener('keyup',   function(ev) { _inputHandler.keyUp(ev);   }, false);
+      document.addEventListener('wheel',   function(ev) { _inputHandler.zoom(ev);   }, false);
 
       // Button Events
       document.getElementById('fileLoad').onclick = function() { _inputHandler.readSelectedFile() };
 
-      document.getElementById('far').onclick = function() { _inputHandler.dist() };
+
 
       // HTML Slider Events
       document.getElementById('exampleSlider').addEventListener('mouseup', function() { console.log(this.value); });
@@ -64,7 +65,23 @@ class InputHandler {
             this.camera.tilt(1);
         }
 
+        if(movementX > 0) {
+            this.camera.pan(-1);
+        }
+        else if(movementX < 0) {
+            this.camera.pan(1);
+        }
 
+
+    }
+
+    zoom(ev) {
+      var Y = ev.deltaY;
+      if (Y>0)
+        this.camera.zooom(1)
+      else {
+        this.camera.zooom(-1)
+      }
     }
 
     keyUp(ev) {
@@ -83,10 +100,13 @@ class InputHandler {
             this.camera.truck(1);
         }
         else if(keyName == "w") {
-            this.camera.dolly(1);
+            this.camera.dolly(-1);
         }
         else if(keyName == "s") {
-            this.camera.dolly(-1);
+            this.camera.dolly(1);
+        }
+        else if(keyName == "z") {
+            this.camera.addDist();
         }
     }
 
