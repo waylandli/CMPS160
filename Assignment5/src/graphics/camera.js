@@ -177,35 +177,32 @@ class Camera {
       }
       else if (this.view) {
         if(Math.abs(this.left) > .5 && Math.abs(this.top) < 1.5 ){
-            if(dir == -1){
-                this.left += .1
-                this.right -= .1
-                this.bottom += .1
-                this.top -= .1
-            }
-            else if(dir == 1){
-                this.left -= .1
-                this.right += .1
-                this.bottom -= .1
-                this.top += .1
-            }
-        }
-        else if(Math.abs(this.left) < .5){
-            if(dir == 1){
-                this.left -= .1
-                this.right += .1
-                this.bottom -= .1
-                  his.top += .1
-            }
-        }
-        else if(Math.abs(this.top) > 1.5){
-            if(dir == -1){
-                this.left += .1
-                this.right -= .1
-                this.bottom += .1
-                this.top -= .1
-            }
-        }
+              if(dir == -1){
+                  this.left += .1
+                  this.right -= .1
+                  this.bottom += .1
+                  this.top -= .1
+              }else if(dir == 1){
+                  this.left -= .1
+                  this.right += .1
+                  this.bottom -= .1
+                  this.top += .1
+              }
+          }else if(Math.abs(this.left) < .5){
+              if(dir == 1){
+                  this.left -= .1
+                  this.right += .1
+                  this.bottom -= .1
+                  this.top += .1
+              }
+          }else if(Math.abs(this.top) > 1.5){
+              if(dir == -1){
+                  this.left += .1
+                  this.right -= .1
+                  this.bottom += .1
+                  this.top -= .1
+              }
+          }
           this.projectionMatrix.setOrtho(this.left, this.right, this.bottom, this.top, 1, 10)
       }
 

@@ -31,13 +31,6 @@ class InputHandler {
       document.addEventListener('keyup',   function(ev) { _inputHandler.keyUp(ev);   }, false);
       document.addEventListener('wheel',   function(ev) { _inputHandler.zoom(ev);   }, false);
 
-      // Button Events
-      document.getElementById('fileLoad').onclick = function() { _inputHandler.readSelectedFile() };
-
-
-
-      // HTML Slider Events
-      document.getElementById('exampleSlider').addEventListener('mouseup', function() { console.log(this.value); });
     }
 
     /**
