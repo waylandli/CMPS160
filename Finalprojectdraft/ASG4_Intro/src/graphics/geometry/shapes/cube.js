@@ -7,6 +7,7 @@ class Cube extends Geometry {
 
     //  }
       this.image = image
+      console.log(image);
 
       var sizeOfShape = size;
 

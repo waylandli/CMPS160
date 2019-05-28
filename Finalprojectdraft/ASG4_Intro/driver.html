@@ -5,16 +5,15 @@
   </head>
 
   <body onload = "main()">
-    <canvas id="webgl" width="400" height="400">
+    <canvas id="webgl" width="400" height="400" style = "position: absolute; z-index: 0">
       Please use a browser that supports "canvas"
     </canvas>
 
-    <!-- Buttons to load and print file content -->
-    <br><br>
+    <canvas id="hud" width="400" height="400" style = "position: absolute; z-index: 1">
+
+    </canvas>
 
 
-    <!-- Example Slider -->
-    <br><br>
 
 
 
@@ -38,8 +37,6 @@
     <script src = "src/graphics/geometry/shapes/custom.js"></script>
     <script src = "src/graphics/geometry/shapes/cube.js"></script>
     <script src = "src/graphics/geometry/shapes/square.js"></script>
-    <script src = "src/graphics/geometry/shapes/sphere.js"></script>
-    <script src = "src/graphics/light.js"></script>
     <script src = "src/graphics/renderer.js"></script>
     <script src = "src/graphics/scene.js"></script>
     <script src = "src/graphics/camera.js"></script>

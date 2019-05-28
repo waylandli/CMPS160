@@ -18,8 +18,6 @@ class Renderer {
         this.gl = gl;
         this.scene = scene;
         this.camera = camera;
-        this.rotationMatrix = new Matrix4();
-        this.rotationMatrix.setRotate(.01, 1, 1, 0);
 
         this.textures = {};
 
@@ -56,13 +54,6 @@ class Renderer {
             this.gl.useProgram(geometry.shader.program)
             this.gl.program = geometry.shader.program
 
-            if (this.scene.light != null) {
-              this.scene.light.pos = this.rotationMatrix.multiplyVector3(this.scene.light.pos)
-              geometry.shader.setUniform("u_LightPosition", this.scene.light.pos.elements);
-              geometry.shader.setUniform("u_AmbientColor", this.scene.light.ambient);
-              geometry.shader.setUniform("u_DiffuseColor", this.scene.light.diffuse);
-              geometry.shader.setUniform("u_SpecularColor", this.scene.light.specular);
-            }
             geometry.shader.setUniform("u_ViewMatrix", this.camera.viewMatrix.elements);
             geometry.shader.setUniform("u_ProjectionMatrix", this.camera.projectionMatrix.elements);
 
